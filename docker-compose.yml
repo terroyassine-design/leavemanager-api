@@ -1,0 +1,33 @@
+# Local environment.
+#   docker compose up -d db   -> only PostgreSQL (run the API from your IDE)
+#   docker compose up --build -> PostgreSQL + API in containers
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: leavemanager
+      POSTGRES_USER: leavemanager
+      POSTGRES_PASSWORD: leavemanager
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U leavemanager"]
+      interval: 5s
+      retries: 10
+
+  api:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: jdbc:postgresql://db:5432/leavemanager
+      DATABASE_USERNAME: leavemanager
+      DATABASE_PASSWORD: leavemanager
+    ports:
+      - "8080:8080"
+
+volumes:
+  db-data:
