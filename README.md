@@ -1,10 +1,10 @@
 # LeaveManager — API
 
-![CI](https://github.com/<ton-compte>/leavemanager-api/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/terroyassine-design/leavemanager-api/actions/workflows/ci.yml/badge.svg)
 
 API REST de gestion des congés : **un employé pose une demande, son manager la valide ou la refuse**, et le solde de congés est mis à jour automatiquement.
 
-> Frontend React : [leavemanager-web](https://github.com/<ton-compte>/leavemanager-web)
+> Frontend React : [leavemanager-web](https://github.com/terroyassine-design/leavemanager-web)
 
 ## Stack
 
